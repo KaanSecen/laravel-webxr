@@ -1,4 +1,15 @@
+include .env
+export APP_PORT
+
 SAIL_DIR := ./vendor/bin/sail
+
+install-first:
+	docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v $(pwd):/var/www/html \
+        -w /var/www/html \
+        laravelsail/php81-composer:latest \
+        composer install --ignore-platform-reqs
 install:
 	@make build
 	@make up
@@ -10,7 +21,7 @@ build:
 up:
 	$(SAIL_DIR) up -d
 	sleep 2
-	open http://localhost
+	open http://localhost:$(APP_PORT)
 composer-install:
 	$(SAIL_DIR) composer install
 composer-update:
