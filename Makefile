@@ -22,6 +22,11 @@ up:
 	$(SAIL_DIR) up -d
 	sleep 2
 	open http://localhost:$(APP_PORT)
+create-admin:
+	$(SAIL_DIR) php artisan make:filament-user
+upgrade-filament:
+	@make composer-update
+	$(SAIL_DIR) php artisan filament:upgrade
 composer-install:
 	$(SAIL_DIR) composer install
 composer-update:
