@@ -28,9 +28,13 @@ class ArtWorksResource extends Resource
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
                     ->required(),
-                Forms\Components\DateTimePicker::make('date')
+                Forms\Components\DatePicker::make('date')
                     ->required(),
-                Forms\Components\TextInput::make('description')
+                Forms\Components\MarkdownEditor::make('description')
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                    ])
                     ->maxLength(255),
             ]);
     }

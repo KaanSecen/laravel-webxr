@@ -1,5 +1,6 @@
 include .env
 export APP_PORT
+export APP_URL
 
 SAIL_DIR := ./vendor/bin/sail
 
@@ -20,8 +21,8 @@ build:
 	$(SAIL_DIR) build --no-cache
 up:
 	$(SAIL_DIR) up -d
-	sleep 2
-	open http://localhost:$(APP_PORT)
+	sleep 5
+	open $(APP_URL):$(APP_PORT)
 create-admin:
 	$(SAIL_DIR) php artisan make:filament-user
 upgrade-filament:
@@ -63,6 +64,8 @@ clear-all:
 	@make view-clear
 	@make route-clear
 	@make config-clear
+link:
+	$(SAIL_DIR) php artisan storage:link
 test:
 	$(SAIL_DIR) php artisan test
 build-production:
