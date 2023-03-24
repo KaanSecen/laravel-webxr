@@ -46,6 +46,8 @@ migrate-seed:
 	$(SAIL_DIR) php artisan db:seed
 migrate:
 	$(SAIL_DIR) php artisan migrate
+migrate-fresh:
+	$(SAIL_DIR) php artisan migrate:fresh
 seed:
 	$(SAIL_DIR) php artisan db:seed
 cache-clear:
