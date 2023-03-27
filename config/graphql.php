@@ -78,6 +78,9 @@ return [
                 // ExampleQuery::class,
                 'artwork' => \App\GraphQL\Queries\ArtWork\ArtWorkQuery::class,
                 'artworks' => \App\GraphQL\Queries\ArtWork\ArtWorksQuery::class,
+
+                'category' => \App\GraphQL\Queries\Category\CategoryQuery::class,
+                'categories' => \App\GraphQL\Queries\Category\CategoriesQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -112,6 +115,7 @@ return [
         // ExampleRelationType::class,
         // \Rebing\GraphQL\Support\UploadType::class,
         'ArtWork' => \App\GraphQL\Types\ArtWorkType::class,
+        'Category' => \App\GraphQL\Types\CategoryType::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

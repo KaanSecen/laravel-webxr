@@ -2,19 +2,18 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ArtWorksResource\Pages;
-use App\Models\ArtWork;
+use App\Filament\Resources\CategoryResource\Pages;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 
-class ArtWorksResource extends Resource
+class CategoryResource extends Resource
 {
-    protected static ?string $model = ArtWork::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-camera';
+    protected static ?string $model = Category::class;
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     public static function form(Form $form): Form
     {
@@ -22,16 +21,6 @@ class ArtWorksResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->required(),
-                Forms\Components\DatePicker::make('date')
-                    ->required(),
-                Forms\Components\MarkdownEditor::make('description')
-                    ->disableToolbarButtons([
-                        'attachFiles',
-                        'codeBlock',
-                    ])
                     ->maxLength(255),
             ]);
     }
@@ -42,10 +31,6 @@ class ArtWorksResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('date')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('description'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
@@ -66,7 +51,7 @@ class ArtWorksResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageArtWorks::route('/'),
+            'index' => Pages\ManageCategories::route('/'),
         ];
     }
 }
