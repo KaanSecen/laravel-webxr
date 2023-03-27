@@ -22,7 +22,7 @@ build:
 up:
 	$(SAIL_DIR) up -d
 	sleep 5
-	open $(APP_URL):$(APP_PORT)
+	open $(APP_URL)
 create-admin:
 	$(SAIL_DIR) php artisan make:filament-user
 upgrade-filament:

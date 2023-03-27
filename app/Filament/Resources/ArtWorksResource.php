@@ -3,8 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArtWorksResource\Pages;
-use App\Filament\Resources\ArtWorksResource\RelationManagers;
-use App\Models\ArtWorks;
+use App\Models\ArtWork;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -15,7 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ArtWorksResource extends Resource
 {
-    protected static ?string $model = ArtWorks::class;
+    protected static ?string $model = ArtWork::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-camera';
 
