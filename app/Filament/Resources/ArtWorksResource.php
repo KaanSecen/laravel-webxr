@@ -14,7 +14,7 @@ class ArtWorksResource extends Resource
 {
     protected static ?string $model = ArtWork::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-camera';
+    protected static ?string $navigationIcon = 'heroicon-o-photograph';
 
     public static function form(Form $form): Form
     {
