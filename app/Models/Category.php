@@ -12,4 +12,9 @@ class Category extends Model
     protected $fillable = [
         'title',
     ];
+
+    public function categories()
+    {
+        return $this->hasMany(Room::class, 'category_id');
+    }
 }

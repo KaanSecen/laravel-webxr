@@ -10,9 +10,15 @@ class ArtWork extends Model
     use HasFactory;
 
     protected $fillable = [
+        'room_id',
         'title',
         'image',
         'date',
         'description'
     ];
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 }

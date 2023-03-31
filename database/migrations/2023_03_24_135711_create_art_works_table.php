@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('art_works', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('room_id')->constrained('rooms');
             $table->string('title');
             $table->string('image');
-            $table->datetime('date');
+            $table->date('date');
             $table->string('description')->nullable();
             $table->timestamps();
         });

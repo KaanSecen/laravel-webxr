@@ -2,19 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ArtWorksResource\Pages;
-use App\Models\ArtWork;
+use App\Filament\Resources\RoomResource\Pages;
+use App\Models\Room;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ArtWorksResource extends Resource
+class RoomResource extends Resource
 {
-    protected static ?string $model = ArtWork::class;
+    protected static ?string $model = Room::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-camera';
+    protected static ?string $navigationIcon = 'heroicon-o-home';
 
     public static function form(Form $form): Form
     {
@@ -23,8 +25,6 @@ class ArtWorksResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image')
-                    ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('description')
@@ -33,10 +33,16 @@ class ArtWorksResource extends Resource
                         'codeBlock',
                     ])
                     ->maxLength(255),
-                Forms\Components\Select::make('room_id')
+                Forms\Components\Select::make('category_id')
                     ->required()
-                    ->relationship('room', 'title')
-
+                    ->relationship('category', 'title'),
+                Forms\Components\Select::make('template')
+                    ->required()
+                    ->options([
+                        1 => 'Template 1',
+                        2 => 'Template 2',
+                        3 => 'Template 3',
+                    ])
             ]);
     }
 
@@ -46,7 +52,6 @@ class ArtWorksResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('date')
                     ->dateTime('d/m/Y'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -69,7 +74,7 @@ class ArtWorksResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageArtWorks::route('/'),
+            'index' => Pages\ManageRooms::route('/'),
         ];
     }
 }
