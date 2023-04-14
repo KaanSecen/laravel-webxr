@@ -81,6 +81,9 @@ return [
 
                 'category' => \App\GraphQL\Queries\Category\CategoryQuery::class,
                 'categories' => \App\GraphQL\Queries\Category\CategoriesQuery::class,
+
+                'room' => \App\GraphQL\Queries\Room\RoomQuery::class,
+                'rooms' => \App\GraphQL\Queries\Room\RoomsQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -116,6 +119,7 @@ return [
         // \Rebing\GraphQL\Support\UploadType::class,
         'ArtWork' => \App\GraphQL\Types\ArtWorkType::class,
         'Category' => \App\GraphQL\Types\CategoryType::class,
+        'Room' => \App\GraphQL\Types\RoomType::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

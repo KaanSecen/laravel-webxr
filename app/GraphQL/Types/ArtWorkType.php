@@ -27,7 +27,7 @@ class ArtWorkType extends GraphQLType
             ],
             'room_id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'ID of room'
+                'description' => 'ID of art work room'
             ],
             'title' => [
                 'type' => Type::nonNull(Type::string()),
@@ -47,7 +47,7 @@ class ArtWorkType extends GraphQLType
             ],
             'date' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'Image of the art work'
+                'description' => 'Date of the art work'
             ],
             'artworks' => [
                 'type' => Type::listOf(GraphQL::type('ArtWork')),
