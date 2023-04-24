@@ -41,7 +41,7 @@ class RoomResource extends Resource
                     ->options([
                         1 => 'Default',
                         2 => 'Heaven',
-                        3 => 'purgatory',
+                        3 => 'Purgatory',
                         4 => 'Hell'
                     ])
                     ->default(1)
