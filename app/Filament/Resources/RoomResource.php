@@ -39,10 +39,12 @@ class RoomResource extends Resource
                 Forms\Components\Select::make('template')
                     ->required()
                     ->options([
-                        1 => 'Template 1',
-                        2 => 'Template 2',
-                        3 => 'Template 3',
+                        1 => 'Default',
+                        2 => 'Heaven',
+                        3 => 'purgatory',
+                        4 => 'Hell'
                     ])
+                    ->default(1)
             ]);
     }
 
