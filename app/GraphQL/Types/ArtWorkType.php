@@ -50,8 +50,8 @@ class ArtWorkType extends GraphQLType
                 'description' => 'Date of the art work'
             ],
             'artworks' => [
-                'type' => Type::listOf(GraphQL::type('ArtWork')),
-                'description' => 'List of art works'
+                'type' => GraphQL::paginate('ArtWork'),
+                'description' => 'Pagination of artworks'
             ]
         ];
     }

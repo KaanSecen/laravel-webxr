@@ -16,7 +16,7 @@ class ArtWorksQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('ArtWork'));
+        return GraphQL::paginate('ArtWork');
     }
 
     public function args(): array
@@ -25,16 +25,28 @@ class ArtWorksQuery extends Query
             'room_id' => [
                 'name' => 'room_id',
                 'type' => Type::int(),
-            ]
+            ],
+            'page' => [
+                'name' => 'page',
+                'type' => Type::int(),
+                'defaultValue' => 1,
+            ],
+            'perPage' => [
+                'name' => 'perPage',
+                'type' => Type::int(),
+                'defaultValue' => 10,
+            ],
         ];
     }
 
-    public function resolve($root, $args): Collection|array
+    public function resolve($root, $args)
     {
+        $query = ArtWork::query();
+
         if (isset($args['room_id'])) {
-            return ArtWork::query()->where('room_id' , $args['room_id'])->get();
+            $query->where('room_id' , $args['room_id']);
         }
 
-        return ArtWork::all();
+        return $query->paginate($args['perPage'], ['*'], 'page', $args['page']);
     }
 }
