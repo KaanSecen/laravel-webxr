@@ -15,7 +15,7 @@ class RoomsQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Room'));
+        return GraphQL::paginate('Room');
     }
 
     public function args(): array
@@ -24,16 +24,29 @@ class RoomsQuery extends Query
             'category_id' => [
                 'name' => 'category_id',
                 'type' => Type::int(),
-            ]
+            ],
+            'page' => [
+                'name' => 'page',
+                'type' => Type::int(),
+                'defaultValue' => 1,
+            ],
+            'perPage' => [
+                'name' => 'perPage',
+                'type' => Type::int(),
+                'defaultValue' => 10,
+            ],
         ];
     }
 
     public function resolve($root, $args)
     {
+        $query = Room::query();
+
         if (isset($args['category_id'])) {
-            return Room::query()->where('category_id' , $args['category_id'])->get();
+            $query->where('category_id', $args['category_id']);
         }
 
-        return Room::all();
+        return $query->paginate($args['perPage'], ['*'], 'page', $args['page']);
     }
 }
+

@@ -45,8 +45,8 @@ class RoomType extends GraphQLType
                 'description' => 'Description of the room'
             ],
             'rooms' => [
-                'type' => Type::listOf(GraphQL::type('Room')),
-                'description' => 'List of rooms'
+                'type' => GraphQL::paginate('Room'),
+                'description' => 'Pagination of rooms'
             ]
         ];
     }
