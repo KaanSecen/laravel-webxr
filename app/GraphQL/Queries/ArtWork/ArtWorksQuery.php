@@ -31,10 +31,15 @@ class ArtWorksQuery extends Query
                 'type' => Type::int(),
                 'defaultValue' => 1,
             ],
-            'perPage' => [
-                'name' => 'perPage',
+            'per_page' => [
+                'name' => 'per_page',
                 'type' => Type::int(),
                 'defaultValue' => 10,
+            ],
+            'date' => [
+                'name' => 'date',
+                'type' => Type::string(),
+                'defaultValue' => 'desc',
             ],
         ];
     }
@@ -47,6 +52,8 @@ class ArtWorksQuery extends Query
             $query->where('room_id' , $args['room_id']);
         }
 
-        return $query->paginate($args['perPage'], ['*'], 'page', $args['page']);
+        $query->orderBy('date', $args['date']);
+
+        return $query->paginate($args['per_page'], ['*'], 'page', $args['page']);
     }
 }
