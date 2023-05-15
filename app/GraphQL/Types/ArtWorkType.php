@@ -51,7 +51,7 @@ class ArtWorkType extends GraphQLType
             ],
             'description' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'Description of the artwork'
+                'description' => 'Description of the art work'
             ],
             'artworks' => [
                 'type' => GraphQL::paginate('ArtWork'),
