@@ -30,10 +30,15 @@ class RoomsQuery extends Query
                 'type' => Type::int(),
                 'defaultValue' => 1,
             ],
-            'perPage' => [
-                'name' => 'perPage',
+            'per_page' => [
+                'name' => 'per_page',
                 'type' => Type::int(),
                 'defaultValue' => 10,
+            ],
+            'date' => [
+                'name' => 'date',
+                'type' => Type::string(),
+                'defaultValue' => 'desc',
             ],
         ];
     }
@@ -46,7 +51,9 @@ class RoomsQuery extends Query
             $query->where('category_id', $args['category_id']);
         }
 
-        return $query->paginate($args['perPage'], ['*'], 'page', $args['page']);
+        $query->orderBy('date', $args['date']);
+
+        return $query->paginate($args['per_page'], ['*'], 'page', $args['page']);
     }
 }
 
