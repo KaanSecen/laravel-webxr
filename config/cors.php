@@ -19,7 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [
+        'https://64635b973f4fe37aa2340a9b--wanda-gallery.netlify.app/',
+        'https://wanda.gallery/'],
 
     'allowed_origins_patterns' => [],
 
