@@ -15,13 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'graphql'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [
-        'https://64635b973f4fe37aa2340a9b--wanda-gallery.netlify.app/',
-        'https://wanda.gallery/'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
