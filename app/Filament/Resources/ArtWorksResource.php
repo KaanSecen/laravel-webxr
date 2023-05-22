@@ -33,8 +33,7 @@ class ArtWorksResource extends Resource
                     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
                     ->rules('file', 'mimetypes:audio/mpeg,audio/mp3')
                     ->maxSize(5048)
-                    ->directory('sounds')
-                    ->required(),
+                    ->directory('sounds'),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('description')
