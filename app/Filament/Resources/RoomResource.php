@@ -48,8 +48,7 @@ class RoomResource extends Resource
                     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
                     ->rules('file', 'mimetypes:audio/mpeg,audio/mp3')
                     ->directory('sounds')
-                    ->maxSize(5048)
-                    ->required(),
+                    ->maxSize(5048),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('description')
