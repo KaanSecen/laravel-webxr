@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('intro')->nullable();
             $table->string('cover_image');
-            $table->string('background_image');
+            $table->string('background_image')->nullable();
             $table->string('color');
-            $table->string('sound');
+            $table->string('sound')->nullable();
             $table->date('date');
             $table->string('description')->nullable();
             $table->timestamps();
