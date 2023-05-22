@@ -35,18 +35,22 @@ class RoomResource extends Resource
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                     ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
                     ->directory('cover-images')
+                    ->maxSize(1024)
                     ->required(),
                 Forms\Components\FileUpload::make('background_image')
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                     ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
                     ->directory('background-images')
+                    ->maxSize(5048)
                     ->required(),
                 Forms\Components\ColorPicker::make('color')
                     ->required(),
                 Forms\Components\FileUpload::make('sound')
                     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
-                    ->rules('required', 'file', 'mimetypes:audio/mpeg,audio/mp3', 'mimes:mpga,mp3')
-                    ->directory('sounds'),
+                    ->rules('file', 'mimetypes:audio/mpeg,audio/mp3')
+                    ->directory('sounds')
+                    ->maxSize(5048)
+                    ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('description')
