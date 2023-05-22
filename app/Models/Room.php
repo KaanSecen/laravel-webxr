@@ -11,6 +11,11 @@ class Room extends Model
 
     protected $fillable = [
         'title',
+        'intro',
+        'cover_image',
+        'background_image',
+        'color',
+        'sound',
         'category_id',
         'template',
         'date',

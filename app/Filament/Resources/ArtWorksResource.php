@@ -24,6 +24,16 @@ class ArtWorksResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
+                    ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
+                    ->maxSize(1024)
+                    ->directory('artworks')
+                    ->required(),
+                Forms\Components\FileUpload::make('sound')
+                    ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
+                    ->rules('file', 'mimetypes:audio/mpeg,audio/mp3')
+                    ->maxSize(5048)
+                    ->directory('sounds')
                     ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
