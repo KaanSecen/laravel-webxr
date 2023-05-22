@@ -25,6 +25,28 @@ class RoomResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\MarkdownEditor::make('intro')
+                    ->disableToolbarButtons([
+                        'attachFiles',
+                        'codeBlock',
+                    ])
+                    ->maxLength(255),
+                Forms\Components\FileUpload::make('cover_image')
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
+                    ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
+                    ->directory('cover-images')
+                    ->required(),
+                Forms\Components\FileUpload::make('background_image')
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
+                    ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
+                    ->directory('background-images')
+                    ->required(),
+                Forms\Components\ColorPicker::make('color')
+                    ->required(),
+                Forms\Components\FileUpload::make('sound')
+                    ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
+                    ->rules('required', 'file', 'mimetypes:audio/mpeg,audio/mp3', 'mimes:mpga,mp3')
+                    ->directory('sounds'),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\MarkdownEditor::make('description')
@@ -54,12 +76,21 @@ class RoomResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\ImageColumn::make('cover_image'),
+                Tables\Columns\ImageColumn::make('background_image'),
+                Tables\Columns\ColorColumn::make('color')
+                    ->copyable()
+                    ->copyMessage('Color code copied')
+                    ->copyMessageDuration(1500),
                 Tables\Columns\TextColumn::make('date')
                     ->dateTime('d/m/Y'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\SelectColumn::make('template')
+                    ->options([
+                        1 => 'Default',
+                        2 => 'Heaven',
+                        3 => 'Purgatory',
+                        4 => 'Hell'
+                    ]),
             ])
             ->filters([
                 //

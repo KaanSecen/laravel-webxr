@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained('rooms');
             $table->string('title');
             $table->string('image');
+            $table->string('sound');
             $table->date('date');
             $table->string('description')->nullable();
             $table->timestamps();

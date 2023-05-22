@@ -16,6 +16,11 @@ return new class extends Migration
             $table->integer('template');
             $table->foreignId('category_id')->constrained('categories');
             $table->string('title');
+            $table->string('intro')->nullable();
+            $table->string('cover_image');
+            $table->string('background_image');
+            $table->string('color');
+            $table->string('sound');
             $table->date('date');
             $table->string('description')->nullable();
             $table->timestamps();

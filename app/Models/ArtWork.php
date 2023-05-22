@@ -13,6 +13,7 @@ class ArtWork extends Model
         'room_id',
         'title',
         'image',
+        'sound',
         'date',
         'description'
     ];
