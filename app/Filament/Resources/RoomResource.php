@@ -41,8 +41,7 @@ class RoomResource extends Resource
                     ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/webp'])
                     ->rules( 'file', 'mimetypes:image/png,image/jpeg,image/webp')
                     ->directory('background-images')
-                    ->maxSize(5048)
-                    ->required(),
+                    ->maxSize(5048),
                 Forms\Components\ColorPicker::make('color')
                     ->required(),
                 Forms\Components\FileUpload::make('sound')
