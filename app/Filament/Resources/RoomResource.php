@@ -50,7 +50,8 @@ class RoomResource extends Resource
                     ->directory('sounds')
                     ->maxSize(5048),
                 Forms\Components\DatePicker::make('date')
-                    ->required(),
+                    ->format('Y')
+                    ->displayFormat('Y'),
                 Forms\Components\MarkdownEditor::make('description')
                     ->disableToolbarButtons([
                         'attachFiles',
@@ -85,7 +86,7 @@ class RoomResource extends Resource
                     ->copyMessage('Color code copied')
                     ->copyMessageDuration(1500),
                 Tables\Columns\TextColumn::make('date')
-                    ->dateTime('d/m/Y'),
+                    ->dateTime('Y'),
                 Tables\Columns\SelectColumn::make('template')
                     ->options([
                         1 => 'Default',

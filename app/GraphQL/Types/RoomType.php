@@ -37,10 +37,6 @@ class RoomType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Title of the room'
             ],
-            'filename' => [
-                'type' => Type::nonNull(Type::string()),
-                'description' => 'Image Filename of the room'
-            ],
             'cover_url' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'URL of the cover room',
@@ -50,7 +46,7 @@ class RoomType extends GraphQLType
                 },
             ],
             'background_url' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'URL of the background room',
                 'resolve' => function ($root, $args) {
                     $url = config('app.url') . Storage::url($root->path . $root->filename);
@@ -58,23 +54,27 @@ class RoomType extends GraphQLType
                 },
             ],
             'sound' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'URL of the sound',
                 'resolve' => function ($root, $args) {
                     $url = config('app.url') . Storage::url($root->path . $root->filename);
                     return $url . $root->sound;
                 },
             ],
-            'date' => [
+            'color' => [
                 'type' => Type::nonNull(Type::string()),
+                'description' => 'Color of the room'
+            ],
+            'date' => [
+                'type' => Type::string(),
                 'description' => 'Date of the room'
             ],
             'description' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'Description of the room'
             ],
             'intro' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'Description of the room'
             ],
             'rooms' => [

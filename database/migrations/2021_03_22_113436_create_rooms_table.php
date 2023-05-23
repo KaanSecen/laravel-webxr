@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('background_image')->nullable();
             $table->string('color');
             $table->string('sound')->nullable();
-            $table->date('date');
+            $table->year('date')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

@@ -33,10 +33,6 @@ class ArtWorkType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Title of the art work'
             ],
-            'filename' => [
-                'type' => Type::nonNull(Type::string()),
-                'description' => 'Image Filename of the art work'
-            ],
             'url' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'URL of the art work',
@@ -46,11 +42,11 @@ class ArtWorkType extends GraphQLType
                 },
             ],
             'date' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'Date of the art work'
             ],
             'description' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
                 'description' => 'Description of the art work'
             ],
             'artworks' => [
