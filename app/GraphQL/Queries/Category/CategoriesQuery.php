@@ -15,11 +15,29 @@ class CategoriesQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Category'));
+        return GraphQL::paginate('Category');
+    }
+
+    public function args(): array
+    {
+        return [
+            'page' => [
+                'name' => 'page',
+                'type' => Type::int(),
+                'defaultValue' => 1,
+            ],
+            'per_page' => [
+                'name' => 'per_page',
+                'type' => Type::int(),
+                'defaultValue' => 10,
+            ],
+        ];
     }
 
     public function resolve($root, $args)
     {
-        return Category::all();
+        $query = Category::query();
+
+        return $query->paginate($args['per_page'], ['*'], 'page', $args['page']);
     }
 }

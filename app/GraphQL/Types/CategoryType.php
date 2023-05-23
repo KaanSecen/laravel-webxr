@@ -29,8 +29,20 @@ class CategoryType extends GraphQLType
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Title of the category'
             ],
+            'intro' => [
+                'type' => Type::string(),
+                'description' => 'Description of the room'
+            ],
+            'cover_url' => [
+                'type' => Type::nonNull(Type::string()),
+                'description' => 'URL of the cover room',
+                'resolve' => function ($root, $args) {
+                    $url = config('app.url') . Storage::url($root->path . $root->filename);
+                    return $url . $root->cover_image;
+                },
+            ],
             'categories' => [
-                'type' => Type::listOf(GraphQL::type('Category')),
+                'type' => GraphQL::paginate('Category'),
                 'description' => 'List of category'
             ]
         ];

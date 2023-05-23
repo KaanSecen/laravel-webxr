@@ -29,13 +29,18 @@ class ArtWorksResource extends Resource
                     ->maxSize(1024)
                     ->directory('artworks')
                     ->required(),
+                Forms\Components\TextInput::make('url')
+                    ->url()
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\FileUpload::make('sound')
                     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
                     ->rules('file', 'mimetypes:audio/mpeg,audio/mp3')
                     ->maxSize(5048)
                     ->directory('sounds'),
                 Forms\Components\DatePicker::make('date')
-                    ->required(),
+                    ->format('Y')
+                    ->displayFormat('Y'),
                 Forms\Components\MarkdownEditor::make('description')
                     ->disableToolbarButtons([
                         'attachFiles',
@@ -56,12 +61,9 @@ class ArtWorksResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('url'),
                 Tables\Columns\TextColumn::make('date')
-                    ->dateTime('d/m/Y'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                    ->dateTime('Y'),
             ])
             ->filters([
                 //
