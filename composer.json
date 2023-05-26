@@ -14,6 +14,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "marjose123/filament-lockscreen": "^1.1",
+        "pxlrbt/filament-spotlight": "^0.3.8",
         "rebing/graphql-laravel": "^8.6"
     },
     "require-dev": {
