@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "awcodes/overlook": "^1.1",
         "cms-multi/filament-clear-cache": "^1.0",
         "filament/filament": "^2.17",
         "guzzlehttp/guzzle": "^7.2",
