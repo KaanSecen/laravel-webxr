@@ -31,7 +31,6 @@ class ArtWorksResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('url')
                     ->url()
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('sound')
                     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3'])
