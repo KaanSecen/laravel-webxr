@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use lockscreen\FilamentLockscreen\Http\Livewire\LockerScreen;
 
 /*
 |--------------------------------------------------------------------------
