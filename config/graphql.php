@@ -82,6 +82,9 @@ return [
                 'category' => \App\GraphQL\Queries\Category\CategoryQuery::class,
                 'categories' => \App\GraphQL\Queries\Category\CategoriesQuery::class,
 
+                'page' => \App\GraphQL\Queries\Page\PageQuery::class,
+                'pages' => \App\GraphQL\Queries\Page\PagesQuery::class,
+
                 'room' => \App\GraphQL\Queries\Room\RoomQuery::class,
                 'rooms' => \App\GraphQL\Queries\Room\RoomsQuery::class,
             ],
@@ -119,6 +122,7 @@ return [
         // \Rebing\GraphQL\Support\UploadType::class,
         'ArtWork' => \App\GraphQL\Types\ArtWorkType::class,
         'Category' => \App\GraphQL\Types\CategoryType::class,
+        'Page' => \App\GraphQL\Types\PageType::class,
         'Room' => \App\GraphQL\Types\RoomType::class,
     ],
 
